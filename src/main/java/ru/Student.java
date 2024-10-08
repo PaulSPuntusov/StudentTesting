@@ -1,10 +1,17 @@
 package ru;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.SneakyThrows;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 public class Student {
+    @Getter
+    @Setter
+    private StudentCheckGrade checkGrade;
     private String name;
     private List grades = new ArrayList<>();
 
@@ -24,12 +31,15 @@ public class Student {
         List<Integer> copyGrades = new ArrayList<>(this.grades);
         return copyGrades;
     }
+    @SneakyThrows
     public void addGrade(int grade){
-        if(grade < 2|| grade > 5){
+        if(checkGrade.studentCheckGrade(grade)){
             throw new IllegalArgumentException(grade + " is wrong grade");
         }
         grades.add(grade);
     }
+
+
 
     @Override
     public int hashCode() {
