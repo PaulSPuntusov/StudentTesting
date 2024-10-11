@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+
 public class Student {
     @Getter
     @Setter
@@ -33,6 +34,8 @@ public class Student {
     }
     @SneakyThrows
     public void addGrade(int grade){
+        // CloseableHttpClient httpClient = HttpClients.createDefault();
+        //HttpGet request = new HttpGet ("...");
         if(checkGrade.studentCheckGrade(grade)){
             throw new IllegalArgumentException(grade + " is wrong grade");
         }

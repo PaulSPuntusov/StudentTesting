@@ -1,2 +1,7 @@
-package ru;public interface CloseableHttpResponse {
+package ru;
+
+import org.mockito.Mockito;
+
+public interface CloseableHttpResponse {
+    Object getEntity();
 }
