@@ -8,16 +8,16 @@ import org.mockito.internal.matchers.Null;
 
 public class RestTest {
     @Test
-    public void testNoStudent(){
+    public void test2__NoStudent(){
         RestAssured.given()
-                .baseUri("http://localhost:8080/student/1")
+                .baseUri("http://localhost:8080/student/1111")
                 .when()
                 .get()
                 .then()
                 .statusCode(404); // еще нет ни одного студента
     }
     @Test
-    public void testPostStudent(){ // с оценками можно
+    public void test3__PostStudent(){ // с оценками можно
         RestAssured.given()
                 .baseUri("http://localhost:8080/student")
                 .contentType(ContentType.JSON)
@@ -34,7 +34,7 @@ public class RestTest {
                 .statusCode(201);
     }
     @Test
-    public void testPostStudent2(){ // без оценок проваливает, хотя в документации сказано, что можно
+    public void test3_1_PostStudent2(){ // без оценок разрешает, но без массива проваливает, хотя в документации сказано, что можно
         RestAssured.given()
                 .baseUri("http://localhost:8080/student")
                 .contentType(ContentType.JSON)
@@ -51,7 +51,7 @@ public class RestTest {
                 .statusCode(201); // это второй
     }
     @Test
-    public void testPostStudent3(){ // без оценок проваливает, хотя в документации сказано, что можно -баг
+    public void test3_2_PostStudent3(){ // без оценок проваливает, хотя в документации сказано, что можно -баг
         RestAssured.given()
                 .baseUri("http://localhost:8080/student")
                 .contentType(ContentType.JSON)
@@ -65,10 +65,10 @@ public class RestTest {
                 .when()
                 .post()
                 .then()
-                .statusCode(400); // Баг
+                .statusCode(201); // Баг
     }
     @Test
-    public void testPostStudent4(){ // пишет постоянно новых студентов - не перезаписывает по номеру
+    public void test4_PostStudent4(){ // пишет постоянно новых студентов - не перезаписывает по номеру
         RestAssured.given()
                 .baseUri("http://localhost:8080/student")
                 .contentType(ContentType.JSON)
@@ -85,4 +85,97 @@ public class RestTest {
                 .statusCode(201)
                 .body(Matchers.hasToString(String.valueOf(3)));
     }
+    @Test
+    public void test5_PostStudent4(){ // не работает по описанию
+        RestAssured.given()
+                .baseUri("http://localhost:8080/student")
+                .contentType(ContentType.JSON)
+                .body("""
+                        {
+                        "Id": Null,
+                        "name": "Tretyak",
+                        "marks": [3,4,5]
+                        }
+                """)
+                .when()
+                .post()
+                .then()
+                .statusCode(201)
+                .body(Matchers.notNullValue());
+    }
+    @Test
+    public void test6__PostStudent4() { // все ок
+        RestAssured.given()
+                .baseUri("http://localhost:8080/student")
+                .contentType(ContentType.JSON)
+                .body("""
+                                {
+                                "Id": 5,
+                                "name": Null,
+                                "marks": [3,4,5]
+                                }
+                        """)
+                .when()
+                .post()
+                .then()
+                .statusCode(400)
+                .body(Matchers.notNullValue());
+    }
+    @Test
+    public void test7__DeleteExistStudent(){ // с этим - ок
+        RestAssured.given()
+                .baseUri("http://localhost:8080/student/8")
+                .contentType(ContentType.JSON)
+                .body("""
+                        {
+                        "Id": 8,
+                        "name": "Tretyak",
+                        "marks": [3,4,5]
+                        }
+                """)
+                .when()
+                .delete()
+                .then()
+                .statusCode(200);
+    }
+    @Test
+    public void test8__DeleteStudentNotExist(){ // с этим - ок
+        RestAssured.given()
+                .baseUri("http://localhost:8080/student/118")
+                .contentType(ContentType.JSON)
+                .body("""
+                        {
+                        "Id": 8,
+                        "name": "Tretyak",
+                        "marks": [3,4,5]
+                        }
+                """)
+                .when()
+                .delete()
+                .then()
+                .statusCode(404);
+    }
+    @Test
+    public void test1__GetStudent() {
+        RestAssured.given()
+                .baseUri("http://localhost:8080/student/7")
+                .when()
+                .get()
+                .then()
+                .statusCode(200)
+                .contentType(ContentType.JSON)
+                .body("name", Matchers.equalTo("Tretyak"));
+    }
+    @Test
+    public void test9__GetTopStudent() {
+        RestAssured.given()
+                .baseUri("http://localhost:8080/topStudent")
+                .when()
+                .get()
+                .then()
+                .statusCode(200)
+                .contentType(ContentType.JSON)
+                .body("name", Matchers.equalTo("Tretyak"));
+    }
+
 }
