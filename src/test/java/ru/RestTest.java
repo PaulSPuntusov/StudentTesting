@@ -181,7 +181,7 @@ public class RestTest {
                 .contentType(ContentType.JSON)
                 .when()
                 .get()
-                    .getBody().print().toString();
+                    .getBody().print();
                 //.then()
                 //.statusCode(200)
                 //.contentType(ContentType.JSON) // он отдает не джейсон - я не понял, как с этим быть
