@@ -195,5 +195,18 @@ public class RestTest {
        // int id = jsonPath.getInt("Id");
        // System.out.println(id);
     }
+    @Test
+    public void test10 fromSlava(){
+        RestAssured.given()
+                .baseUri("http://localhost:8080/topStudent")
+                .contentType(ContentType.JSON)
+                .when()
+                .get()
+                .then()
+                .statusCode(200)
+                .contentType(ContentType.JSON) // он отдает не джейсон - я не понял, как с этим быть
+                .body("name[0]", equalTo("sdkfj")).body("marks[0]", hasItems(5, 5, 5))
+                .body("name[1]", equalTo("sdkfj")).body("marks[1]", hasItems(5, 5, 5));
+    }
 
 }
