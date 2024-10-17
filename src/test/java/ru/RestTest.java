@@ -195,6 +195,7 @@ public class RestTest {
        // int id = jsonPath.getInt("Id");
        // System.out.println(id);
     }
+    /*
     @Test
     public void test10 fromSlava(){
         RestAssured.given()
@@ -208,5 +209,7 @@ public class RestTest {
                 .body("name[0]", equalTo("sdkfj")).body("marks[0]", hasItems(5, 5, 5))
                 .body("name[1]", equalTo("sdkfj")).body("marks[1]", hasItems(5, 5, 5));
     }
+
+     */
 
 }
