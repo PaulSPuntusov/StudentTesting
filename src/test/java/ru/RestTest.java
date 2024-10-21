@@ -11,6 +11,7 @@ import org.junit.Test;
 import org.mockito.internal.matchers.Null;
 
 public class RestTest {
+
     @Test
     public void test2__NoStudent(){
         RestAssured.given()
@@ -156,7 +157,7 @@ public class RestTest {
                         }
                 """)
 
-                 */
+
                 .when()
                 .delete()
                 .then()
@@ -195,7 +196,7 @@ public class RestTest {
        // int id = jsonPath.getInt("Id");
        // System.out.println(id);
     }
-    /*
+
     @Test
     public void test10 fromSlava(){
         RestAssured.given()
@@ -210,6 +211,6 @@ public class RestTest {
                 .body("name[1]", equalTo("sdkfj")).body("marks[1]", hasItems(5, 5, 5));
     }
 
-     */
+
 
 }

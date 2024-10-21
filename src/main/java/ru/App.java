@@ -11,11 +11,10 @@ public class App
     public App() throws SQLException {
     }
 
-    public static void main(String[] args )
-    {
+    public static void main(String[] args ) throws ClassNotFoundException {
 
         Student st = new Student("Vasya");
-        st.addGrade(5);
+       // st.addGrade(5);
         System.out.println(st);
         DBTask dbt = new DBTask();
         dbt.action();
