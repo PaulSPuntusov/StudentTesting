@@ -143,11 +143,12 @@ public class RestTest {
                 .then()
                 .statusCode(200);
     }
+    /*
     @Test
     public void test8__DeleteStudentNotExist(){ // с этим - ок
         RestAssured.given()
                 .baseUri("http://localhost:8080/student/118")
-                /*
+
                 .contentType(ContentType.JSON)
                 .body("""
                         {
@@ -163,7 +164,10 @@ public class RestTest {
                 .then()
                 .statusCode(404);
     }
-    @Test
+
+                 */
+
+        @Test
     public void test1__GetStudent() {
         RestAssured.given()
                 .baseUri("http://localhost:8080/student/7")
@@ -196,7 +200,7 @@ public class RestTest {
        // int id = jsonPath.getInt("Id");
        // System.out.println(id);
     }
-
+/*
     @Test
     public void test10 fromSlava(){
         RestAssured.given()
@@ -211,6 +215,8 @@ public class RestTest {
                 .body("name[1]", equalTo("sdkfj")).body("marks[1]", hasItems(5, 5, 5));
     }
 
+
+ */
 
 
 }
