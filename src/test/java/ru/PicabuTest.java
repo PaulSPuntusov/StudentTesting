@@ -50,16 +50,16 @@ public class PicabuTest {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10L));
         driver.findElement(By.xpath("//textarea[contains(@class,\"gLFyf\")]")).sendKeys("Сайт авиакомпании Победа");
         driver.findElement(By.xpath("//textarea[contains(@class,\"gLFyf\")]")).sendKeys(Keys.ENTER); // кликаю именно pobeda.aero
-        wait.until(visibilityOf(driver.findElement(By.xpath("//*[@id=\"rso\"]/div[2]/div[1]/div/div/div/div[1]/div/div/span/a/div/div/div/div[2]/cite"))))
+        wait.until(visibilityOf(driver.findElement(By.xpath("//a[contains(@href,\"https://www.pobeda.aero/ru/\")]"))))
                 .click(); // ищу именно pobeda.aero
-        //element = driver.findElement(By.xpath("//*[@id=\"__next\"]/div[2]/main/div/div/div[1]/div/div[1]/button[4]/div[2]/div/div"));// ищу Калининград
+        element = driver.findElement(By.xpath("//div[contains(@class,\"dp-13gqklo-root\")][.=\"Калининград\"]"));// ищу Калининград
         //waitForVisibilityOfElement(element);
        // wait.until(visibilityOf(driver.findElement(By.xpath("//*[@id=\"__next\"]/div[2]/header/div/div/div[1]/div[2]/button[1]")))); // кнопка переклчения языка - жду кликабельности
 
-        driver.findElement(By.cssSelector("#__next > div.dp-lw1vya-root > header > div > div > div.dp-4ksyid-root-root > " +
-                "div.dp-qq7t6o-root > button.dp-bi33jb-root-root")).click();// кнопка переключения языка нажимаю
-        wait.until(visibilityOf(driver.findElement(By.xpath("/html/body/div[4]/div/div/button[2]/div")))).click();// кнопка выбора английского языка
-        wait.until(visibilityOf(driver.findElement(By.xpath("//*[@id=\"__next\"]/div[2]/main/div/div/div[2]/div/div[1]/div[2]/button[1]/div[1]")))).click();// кнопка выбора Buy ticket
+        //driver.findElement(By.cssSelector("#__next > div.dp-lw1vya-root > header > div > div > div.dp-4ksyid-root-root > " +
+               // "div.dp-qq7t6o-root > button.dp-bi33jb-root-root")).click();// кнопка переключения языка нажимаю
+        //wait.until(visibilityOf(driver.findElement(By.xpath("//button[@class = \"dp-7l10my-root\"]/div[@class = \"dp-1c1tdhh-root\"]")))).click();// кнопка выбора английского языка
+        //wait.until(visibilityOf(driver.findElement(By.xpath("//*[@id=\"__next\"]/div[2]/main/div/div/div[2]/div/div[1]/div[2]/button[1]/div[1]")))).click();// кнопка выбора Buy ticket
     }
 
     public static void waitForVisibilityOfElement(WebElement element) {
