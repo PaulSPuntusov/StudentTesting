@@ -55,15 +55,10 @@ public class PicabuTest {
         element = driver.findElement(By.xpath("//div[contains(@class,\"dp-13gqklo-root\")][.=\"Калининград\"]"));// ищу Калининград
         waitForVisibilityOfElement(element);
         wait.until(visibilityOf(driver.findElement(By.xpath("//div[@class=\"dp-4ksyid-root-root\"]/div[@class=\"dp-qq7t6o-root\"]"))));// ищу кнопку переклбчения языков
-
-
-
-       // wait.until(visibilityOf(driver.findElement(By.xpath("//*[@id=\"__next\"]/div[2]/header/div/div/div[1]/div[2]/button[1]")))); // кнопка переклчения языка - жду кликабельности
-
-        //driver.findElement(By.cssSelector("#__next > div.dp-lw1vya-root > header > div > div > div.dp-4ksyid-root-root > " +
-               // "div.dp-qq7t6o-root > button.dp-bi33jb-root-root")).click();// кнопка переключения языка нажимаю
-        //wait.until(visibilityOf(driver.findElement(By.xpath("//button[@class = \"dp-7l10my-root\"]/div[@class = \"dp-1c1tdhh-root\"]")))).click();// кнопка выбора английского языка
-        //wait.until(visibilityOf(driver.findElement(By.xpath("//*[@id=\"__next\"]/div[2]/main/div/div/div[2]/div/div[1]/div[2]/button[1]/div[1]")))).click();// кнопка выбора Buy ticket
+        driver.findElement(By.xpath("//div[@class=\"dp-4ksyid-root-root\"]/div[@class=\"dp-qq7t6o-root\"]")).click();
+        wait.until(visibilityOf(driver.findElement(By.xpath("//div[.=\"English\"]"))));// ищу кнопку переключения на английский
+        driver.findElement(By.xpath("//div[.=\"English\"]")).click();
+        wait.until((visibilityOf(driver.findElement(By.xpath("//div[@class = \"dp-YpbSQV-textVisible-ref dp-1sr61pz-root-textVisible\"][.=\"Ticket search\"]")))));// кнопка выбора Buy ticket
     }
 
     public static void waitForVisibilityOfElement(WebElement element) {
