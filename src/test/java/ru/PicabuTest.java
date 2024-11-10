@@ -54,7 +54,8 @@ public class PicabuTest {
                 .click(); // ищу именно pobeda.aero
         element = driver.findElement(By.xpath("//div[contains(@class,\"dp-13gqklo-root\")][.=\"Калининград\"]"));// ищу Калининград
         waitForVisibilityOfElement(element);
-        driver.findElement(By.xpath("//button[contains(@class,\"dp-ayg7k9-root-root\")]")).click();// ищу кнопку переклбчения языков
+        wait.until(visibilityOf(driver.findElement(By.xpath("//div[@class=\"dp-4ksyid-root-root\"]/div[@class=\"dp-qq7t6o-root\"]"))));// ищу кнопку переклбчения языков
+
 
 
        // wait.until(visibilityOf(driver.findElement(By.xpath("//*[@id=\"__next\"]/div[2]/header/div/div/div[1]/div[2]/button[1]")))); // кнопка переклчения языка - жду кликабельности
