@@ -53,7 +53,10 @@ public class PicabuTest {
         wait.until(visibilityOf(driver.findElement(By.xpath("//a[contains(@href,\"https://www.pobeda.aero/ru/\")]"))))
                 .click(); // ищу именно pobeda.aero
         element = driver.findElement(By.xpath("//div[contains(@class,\"dp-13gqklo-root\")][.=\"Калининград\"]"));// ищу Калининград
-        //waitForVisibilityOfElement(element);
+        waitForVisibilityOfElement(element);
+        driver.findElement(By.xpath("//button[contains(@class,\"dp-ayg7k9-root-root\")]")).click();// ищу кнопку переклбчения языков
+
+
        // wait.until(visibilityOf(driver.findElement(By.xpath("//*[@id=\"__next\"]/div[2]/header/div/div/div[1]/div[2]/button[1]")))); // кнопка переклчения языка - жду кликабельности
 
         //driver.findElement(By.cssSelector("#__next > div.dp-lw1vya-root > header > div > div > div.dp-4ksyid-root-root > " +
