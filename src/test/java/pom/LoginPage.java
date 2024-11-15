@@ -24,4 +24,21 @@ public class LoginPage {
     public void clickLogin(){
         driver.findElement(login).click();
     }
+    public String getLoginTitle(){
+        return driver.findElement(titleText).getText();
+    }
+    /*
+    * Метод для авторизации на сайте Guru99
+    * @param strUserName
+    * @param strPassword
+    * @return
+     */
+    public void loginToGuru99(String strUserName, String strPassword){
+        // Заполняем логин
+        this.setUserName(strUserName);
+        // Заполняем пароль
+        this.setPassword(strPassword);
+        // кликаем кнопку логина
+        this.clickLogin();
+    }
 }
