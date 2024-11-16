@@ -1,5 +1,6 @@
 package ru;
 
+import com.codeborne.selenide.Selenide;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
 import org.junit.Assert;
@@ -18,6 +19,7 @@ import org.testng.annotations.BeforeMethod;
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
+import static com.codeborne.selenide.Selenide.$;
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
 
 public class Pobeda {
@@ -51,7 +53,6 @@ public class Pobeda {
         driver.findElement(By.xpath("//textarea[contains(@class,\"gLFyf\")]")).sendKeys(Keys.ENTER); // кликаю именно pobeda.aero
         wait.until(visibilityOf(driver.findElement(By.xpath("//a[contains(@href,\"https://www.pobeda.aero/ru/\")]")))).click(); // ищу именно pobeda.aero
         clickLogin();
-        /*
         element = driver.findElement(By.xpath("//div[contains(@class,\"dp-13gqklo-root\")][.=\"Калининград\"]"));// ищу Калининград
         waitForVisibilityOfElement(element);
         wait.until(visibilityOf(driver.findElement(By.xpath("//div[@class=\"dp-4ksyid-root-root\"]/div[@class=\"dp-qq7t6o-root\"]"))));// ищу кнопку переклбчения языков
@@ -59,8 +60,6 @@ public class Pobeda {
         wait.until(visibilityOf(driver.findElement(By.xpath("//div[.=\"English\"]"))));// ищу кнопку переключения на английский
         driver.findElement(By.xpath("//div[.=\"English\"]")).click();
         wait.until((visibilityOf(driver.findElement(By.xpath("//div[@class = \"dp-YpbSQV-textVisible-ref dp-1sr61pz-root-textVisible\"][.=\"Ticket search\"]")))));// кнопка выбора Buy ticket
-
-         */
     }
 
     public static void waitForVisibilityOfElement(WebElement element) {
@@ -91,4 +90,9 @@ public class Pobeda {
         driver.quit();
     }
 
+    @Test
+    public void enterTextToGoogleSelenide(){
+        Selenide.open("https://google.com/");
+        $(By.xpath("//textarea[contains(@class,\"gLFyf\")]")).pressEnter();
+    }
 }
